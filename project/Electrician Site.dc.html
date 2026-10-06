@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap">
+<script src="./image-slot.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/motion@11.11.17/dist/motion.js"></script>
+<style>
+html{scroll-behavior:smooth;background:#05080F}
+body{margin:0;background:#05080F;color:#EEF0F3;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#FFB347;text-decoration:none}
+a:hover{color:#FFD08A}
+:focus-visible{outline:2px solid #FFB347;outline-offset:3px;border-radius:8px}
+input::placeholder,textarea::placeholder{color:#6B7789}
+@keyframes marqueeUp{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}[data-marquee]{animation:none!important}}
+</style>
+</helmet>
+
+<div style="background:#05080F;color:#EEF0F3;min-height:100vh;overflow-x:hidden">
+
+<header id="top" style="position:relative;min-height:100svh;display:flex;flex-direction:column;overflow:hidden">
+  <video data-hero-video="" autoplay="" loop="" muted="" playsinline="" preload="auto" aria-hidden="true" src="./video/hero-pingpong.webm" style="position:absolute;top:0;right:0;width:min(100%, 135svh);height:100%;object-fit:cover;object-position:65% 50%;-webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 14%);mask-image:linear-gradient(90deg, transparent 0%, #000 14%)"></video>
+  <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(5,8,15,0.6) 0%, rgba(5,8,15,0.15) 30%, rgba(5,8,15,0.55) 65%, #05080F 100%), linear-gradient(90deg, rgba(5,8,15,0.75) 0%, rgba(5,8,15,0.25) 55%, rgba(5,8,15,0) 80%)"></div>
+  <div data-cursor-glow="" aria-hidden="true" style="position:absolute;left:0;top:0;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;background:radial-gradient(circle, rgba(255,179,71,0.5) 0%, rgba(245,158,11,0.16) 40%, rgba(245,158,11,0) 70%);filter:blur(48px);mix-blend-mode:screen;pointer-events:none;z-index:1;opacity:0;transition:opacity .6s ease"></div>
+
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:16px;padding:20px clamp(16px,4vw,48px) 0">
+    <p data-reveal="" data-delay="0" style="margin:0;text-align:center;font-size:11px;letter-spacing:0.28em;text-transform:uppercase;opacity:0.7;font-weight:500">Your partner for impeccable electrical work</p>
+    <nav data-reveal="" data-delay="80" aria-label="Primary" style="display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1160px;width:100%;margin:0 auto;padding:10px 10px 10px 22px;background:rgba(10,15,26,0.45);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,0.14);border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.18), 0 20px 50px -20px rgba(0,0,0,0.6)">
+      <a href="#top" style="display:flex;align-items:center;gap:10px;color:#EEF0F3;font-family:Manrope,sans-serif;font-weight:800;font-size:17px;letter-spacing:-0.02em">
+        <span aria-hidden="true" style="width:10px;height:10px;border-radius:50%;background:#FFB347;box-shadow:0 0 14px 2px rgba(255,179,71,0.7)"></span>
+        Halden Electric
+      </a>
+      <sc-if value="{{ notMobile }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;gap:4px;font-size:14px;font-weight:500">
+          <a data-navlink="" href="#services" style="color:#C9D1DC;padding:8px 14px;border-radius:999px;transition:color .2s, background .2s" style-hover="color:#FFFFFF;background:rgba(255,255,255,0.08)">Services</a>
+          <a data-navlink="" href="#projects" style="color:#C9D1DC;padding:8px 14px;border-radius:999px;transition:color .2s, background .2s" style-hover="color:#FFFFFF;background:rgba(255,255,255,0.08)">Projects</a>
+          <a data-navlink="" href="#why" style="color:#C9D1DC;padding:8px 14px;border-radius:999px;transition:color .2s, background .2s" style-hover="color:#FFFFFF;background:rgba(255,255,255,0.08)">Why Us</a>
+          <a data-navlink="" href="#reviews" style="color:#C9D1DC;padding:8px 14px;border-radius:999px;transition:color .2s, background .2s" style-hover="color:#FFFFFF;background:rgba(255,255,255,0.08)">Reviews</a>
+          <a data-navlink="" href="#contact" style="color:#C9D1DC;padding:8px 14px;border-radius:999px;transition:color .2s, background .2s" style-hover="color:#FFFFFF;background:rgba(255,255,255,0.08)">Contact</a>
+        </div>
+      </sc-if>
+      <a class="btn" href="#contact" style="flex-shrink:0;background:#FFB347;color:#1A1205;font-weight:600;font-size:14px;padding:11px 18px;border-radius:999px;transition:background .2s, box-shadow .2s, transform .2s" style-hover="background:#FFC266;color:#1A1205;box-shadow:0 0 40px -10px rgba(255,170,60,0.6)">Request a Quote</a>
+    </nav>
+  </div>
+
+  <div style="position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:flex-end;max-width:1160px;width:100%;margin:0 auto;padding:96px clamp(16px,4vw,48px) 40px">
+    <h1 data-reveal="" data-delay="200" style="margin:0;max-width:820px;font-family:Manrope,sans-serif;font-weight:700;font-size:clamp(42px,7.2vw,92px);line-height:0.98;letter-spacing:-0.04em;text-wrap:balance">Electrical work, done right the first time.</h1>
+    <p data-reveal="" data-delay="320" style="margin:24px 0 0;max-width:520px;font-size:clamp(16px,1.6vw,19px);line-height:1.55;color:#C9D1DC;text-wrap:pretty">Licensed electricians for custom homes and commercial builds, from first-fix wiring to the last lighting scene.</p>
+    <div data-reveal="" data-delay="440" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px">
+      <a class="btn" href="#contact" style="background:#FFB347;color:#1A1205;font-weight:600;font-size:16px;padding:16px 26px;border-radius:999px;transition:background .2s, box-shadow .2s, transform .2s" style-hover="background:#FFC266;color:#1A1205;box-shadow:0 0 40px -10px rgba(255,170,60,0.6)">Request a Quote</a>
+      <a class="btn" href="#projects" style="color:#EEF0F3;font-weight:500;font-size:16px;padding:16px 26px;border-radius:999px;background:rgba(255,255,255,0.06);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,0.18);transition:border-color .2s, transform .2s" style-hover="color:#FFFFFF;border-color:rgba(255,255,255,0.4)">See our work</a>
+    </div>
+
+    <div data-reveal="" data-delay="600" style="margin-top:clamp(48px,8vh,88px);display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));background:rgba(10,15,26,0.4);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,0.14);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.18), 0 20px 50px -20px rgba(0,0,0,0.6)">
+      <div style="padding:20px 24px;display:flex;flex-direction:column;gap:4px"><span style="font-family:Manrope,sans-serif;font-weight:700;font-size:20px;letter-spacing:-0.02em">Licensed &amp; insured</span><span style="font-size:13px;color:#8B97A8">Master electrician on every job</span></div>
+      <div style="padding:20px 24px;display:flex;flex-direction:column;gap:4px;border-left:1px solid rgba(255,255,255,0.08)"><span style="font-family:Manrope,sans-serif;font-weight:700;font-size:20px;letter-spacing:-0.02em">18+ years</span><span style="font-size:13px;color:#8B97A8">In residential and commercial</span></div>
+      <div style="padding:20px 24px;display:flex;flex-direction:column;gap:4px;border-left:1px solid rgba(255,255,255,0.08)"><span style="font-family:Manrope,sans-serif;font-weight:700;font-size:20px;letter-spacing:-0.02em">1,200 projects</span><span style="font-size:13px;color:#8B97A8">Completed and signed off</span></div>
+      <div style="padding:20px 24px;display:flex;flex-direction:column;gap:4px;border-left:1px solid rgba(255,255,255,0.08)"><span style="font-family:Manrope,sans-serif;font-weight:700;font-size:20px;letter-spacing:-0.02em;color:#FFB347">5★ reviews</span><span style="font-size:13px;color:#8B97A8">Across Google and Houzz</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="services" data-screen-label="Services" style="position:relative;padding:clamp(80px,12vw,144px) clamp(16px,4vw,48px)">
+  <div aria-hidden="true" style="position:absolute;width:640px;height:640px;left:55%;top:10%;border-radius:50%;background:radial-gradient(circle, rgba(245,158,11,0.16), rgba(245,158,11,0) 65%);pointer-events:none"></div>
+  <div style="position:relative;max-width:1160px;margin:0 auto">
+    <div data-reveal="" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:56px">
+      <div style="max-width:560px">
+        <p style="margin:0 0 16px;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:#FFB347;font-weight:600">Services</p>
+        <h2 style="margin:0;font-family:Manrope,sans-serif;font-weight:700;font-size:clamp(32px,4.4vw,52px);line-height:1.05;letter-spacing:-0.035em;text-wrap:balance">Everything from the meter to the last light switch.</h2>
+      </div>
+      <p style="margin:0;max-width:360px;color:#8B97A8;font-size:16px;line-height:1.6">One accountable team for design, install, testing and certification.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:16px">
+      <article data-reveal="" data-delay="0" style="padding:32px;display:flex;flex-direction:column;gap:16px;background:rgba(255,255,255,0.06);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,0.14);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.18), 0 20px 50px -20px rgba(0,0,0,0.6);transition:border-color .25s, box-shadow .25s, transform .25s" style-hover="border-color:rgba(255,255,255,0.3);box-shadow:inset 0 1px 0 rgba(255,255,255,0.22), 0 20px 50px -20px rgba(0,0,0,0.6), 0 0 40px -10px rgba(255,170,60,0.35);transform:translateY(-3px)">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#FFB347">01</span>
+        <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.02em">Residential</h3>
+        <p style="margin:0;color:#A3AEBD;font-size:15px;line-height:1.6">Full rewires, renovations and new custom homes. Concealed cabling, clean terminations, labelled boards.</p>
+      </article>
+      <article data-reveal="" data-delay="80" style="padding:32px;display:flex;flex-direction:column;gap:16px;background:rgba(255,255,255,0.06);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,0.14);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.18), 0 20px 50px -20px rgba(0,0,0,0.6);transition:border-color .25s, box-shadow .25s, transform .25s" style-hover="border-color:rgba(255,255,255,0.3);box-shadow:inset 0 1px 0 rgba(255,255,255,0.22), 0 20px 50px -20px rgba(0,0,0,0.6), 0 0 40px -10px rgba(255,170,60,0.35);transform:translateY(-3px)">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#FFB347">02</span>
+        <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.02em">Commercial</h3>
+        <p style="margin:0;color:#A3AEBD;font-size:15px;line-height:1.6">Fit-outs, retail and hospitality builds. We work to the builder's program and hand over complete test records.</p>
+      </article>
+      <article data-reveal="" data-delay="160" style="padding:32px;display:flex;flex-direction:column;gap:16px;background:rgba(255,255,255,0.06);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,0.14);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.18), 0 20px 50px -20px rgba(0,0,0,0.6);transition:border-color .25s, box-shadow .25s, transform .25s" style-hover="border-color:rgba(255,255,255,0.3);box-shadow:inset 0 1px 0 rgba(255,255,255,0.22), 0 20px 50px -20px rgba(0,0,0,0.6), 0 0 40px -10px rgba(255,170,60,0.35);transform:translateY(-3px)">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#FFB347">03</span>
+        <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.02em">EV chargers</h3>
+        <p style="margin:0;color:#A3AEBD;font-size:15px;line-height:1.6">Level 2 home and fleet chargers, with a load calculation first so your panel isn't overloaded.</p>
+      </article>
+      <article data-reveal="" data-delay="0" style="padding:32px;display:flex;flex-direction:column;gap:16px;background:rgba(255,255,255,0.06);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,0.14);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.18), 0 20px 50px -20px rgba(0,0,0,0.6);transition:border-color .25s, box-shadow .25s, transform .25s" style-hover="border-color:rgba(255,255,255,0.3);box-shadow:inset 0 1px 0 rgba(255,255,255,0.22), 0 20px 50px -20px rgba(0,0,0,0.6), 0 0 40px -10px rgba(255,170,60,0.35);transform:translateY(-3px)">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#FFB347">04</span>
+        <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.02em">Panel upgrades</h3>
+        <p style="margin:0;color:#A3AEBD;font-size:15px;line-height:1.6">100A to 200A service upgrades, sub-panels and surge protection, permitted and coordinated with the utility.</p>
+      </article>
+      <article data-reveal="" data-delay="80" style="padding:32px;display:flex;flex-direction:column;gap:16px;background:rgba(255,255,255,0.06);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,0.14);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.18), 0 20px 50px -20px rgba(0,0,0,0.6);transition:border-color .25s, box-shadow .25s, transform .25s" style-hover="border-color:rgba(255,255,255,0.3);box-shadow:inset 0 1px 0 rgba(255,255,255,0.22), 0 20px 50px -20px rgba(0,0,0,0.6), 0 0 40px -10px rgba(255,170,60,0.35);transform:translateY(-3px)">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#FFB347">05</span>
+        <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.02em">Lighting design</h3>
+        <p style="margin:0;color:#A3AEBD;font-size:15px;line-height:1.6">Layered interior and landscape lighting, dimming scenes and smart controls, planned with your architect.</p>
+      </article>
+      <article data-reveal="" data-delay="160" style="padding:32px;display:flex;flex-direction:column;gap:16px;background:rgba(255,255,255,0.06);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,0.14);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.18), 0 20px 50px -20px rgba(0,0,0,0.6);transition:border-color .25s, box-shadow .25s, transform .25s" style-hover="border-color:rgba(255,255,255,0.3);box-shadow:inset 0 1px 0 rgba(255,255,255,0.22), 0 20px 50px -20px rgba(0,0,0,0.6), 0 0 40px -10px rgba(255,170,60,0.35);transform:translateY(-3px)">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#FFB347">06</span>
+        <h3 style="margin:0;font-family:Manrope,sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.02em">Emergency callouts</h3>
+        <p style="margin:0;color:#A3AEBD;font-size:15px;line-height:1.6">24/7 response for outages, burning smells and tripping breakers. A licensed electrician answers, not a call centre.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="why" data-screen-label="Why us" style="background:#0B1220;padding:clamp(80px,12vw,144px) clamp(16px,4vw,48px);border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06)">
+  <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,6vw,96px)">
+    <div data-reveal="">
+      <p style="margin:0 0 16px;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:#FFB347;font-weight:600">Why us</p>
+      <h2 style="margin:0;font-family:Manrope,sans-serif;font-weight:700;font-size:clamp(32px,4.4vw,52px);line-height:1.05;letter-spacing:-0.035em;text-wrap:balance">Four things we put in writing.</h2>
+      <p style="margin:24px 0 0;max-width:420px;color:#8B97A8;font-size:16px;line-height:1.6">These are commitments in every quote we send, not marketing lines.</p>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <div data-reveal="" style="display:grid;grid-template-columns:48px 1fr;gap:16px;padding:28px 0;border-top:1px solid rgba(255,255,255,0.1)">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:13px;color:#FFB347;padding-top:4px">01</span>
+        <div><h3 style="margin:0 0 8px;font-family:Manrope,sans-serif;font-size:20px;font-weight:700;letter-spacing:-0.02em">Master-licensed, fully insured</h3><p style="margin:0;color:#A3AEBD;font-size:15px;line-height:1.6">A master electrician supervises every job. $2M general liability and workers' comp certificates are sent with your quote.</p></div>
+      </div>
+      <div data-reveal="" style="display:grid;grid-template-columns:48px 1fr;gap:16px;padding:28px 0;border-top:1px solid rgba(255,255,255,0.1)">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:13px;color:#FFB347;padding-top:4px">02</span>
+        <div><h3 style="margin:0 0 8px;font-family:Manrope,sans-serif;font-size:20px;font-weight:700;letter-spacing:-0.02em">Tidy job sites</h3><p style="margin:0;color:#A3AEBD;font-size:15px;line-height:1.6">Drop sheets and shoe covers inside, dust extraction on every cut-in, and the site swept before we leave each day.</p></div>
+      </div>
+      <div data-reveal="" style="display:grid;grid-template-columns:48px 1fr;gap:16px;padding:28px 0;border-top:1px solid rgba(255,255,255,0.1)">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:13px;color:#FFB347;padding-top:4px">03</span>
+        <div><h3 style="margin:0 0 8px;font-family:Manrope,sans-serif;font-size:20px;font-weight:700;letter-spacing:-0.02em">Fixed, itemised pricing</h3><p style="margin:0;color:#A3AEBD;font-size:15px;line-height:1.6">Line-by-line quotes with materials named. The price only changes if the scope does, and you approve that in writing first.</p></div>
+      </div>
+      <div data-reveal="" style="display:grid;grid-template-columns:48px 1fr;gap:16px;padding:28px 0;border-top:1px solid rgba(255,255,255,0.1);border-bottom:1px solid rgba(255,255,255,0.1)">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:13px;color:#FFB347;padding-top:4px">04</span>
+        <div><h3 style="margin:0 0 8px;font-family:Manrope,sans-serif;font-size:20px;font-weight:700;letter-spacing:-0.02em">5-year workmanship warranty</h3><p style="margin:0;color:#A3AEBD;font-size:15px;line-height:1.6">If something we installed fails because of how we installed it, we come back and fix it at no charge.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" data-screen-label="Projects" style="padding:clamp(80px,12vw,144px) clamp(16px,4vw,48px)">
+  <div style="max-width:1160px;margin:0 auto">
+    <div data-reveal="" style="margin-bottom:56px;max-width:640px">
+      <p style="margin:0 0 16px;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:#FFB347;font-weight:600">Selected projects</p>
+      <h2 style="margin:0;font-family:Manrope,sans-serif;font-weight:700;font-size:clamp(32px,4.4vw,52px);line-height:1.05;letter-spacing:-0.035em;text-wrap:balance">Recent work, wired and signed off.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px">
+      <figure data-reveal="" style="margin:0;position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#0B1220;grid-row:span 2">
+        <image-slot id="proj-1" shape="rect" placeholder="Project photo: custom residence at dusk"></image-slot>
+        <figcaption style="position:absolute;left:16px;right:16px;bottom:16px;padding:16px 20px;pointer-events:none;background:rgba(10,15,26,0.5);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,0.14);border-radius:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.18)">
+          <p style="margin:0;font-family:Manrope,sans-serif;font-weight:700;font-size:17px">Ridge House</p>
+          <p style="margin:4px 0 0;font-size:13px;color:#A3AEBD">New build · Full wiring, landscape lighting, 2 EV chargers</p>
+        </figcaption>
+      </figure>
+      <figure data-reveal="" data-delay="80" style="margin:0;position:relative;aspect-ratio:16/10;border-radius:20px;overflow:hidden;background:#0B1220">
+        <image-slot id="proj-2" shape="rect" placeholder="Project photo: restaurant fit-out"></image-slot>
+        <figcaption style="position:absolute;left:16px;right:16px;bottom:16px;padding:16px 20px;pointer-events:none;background:rgba(10,15,26,0.5);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,0.14);border-radius:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.18)">
+          <p style="margin:0;font-family:Manrope,sans-serif;font-weight:700;font-size:17px">Oak &amp; Ember</p>
+          <p style="margin:4px 0 0;font-size:13px;color:#A3AEBD">Commercial · Kitchen circuits, feature lighting</p>
+        </figcaption>
+      </figure>
+      <figure data-reveal="" data-delay="160" style="margin:0;position:relative;aspect-ratio:16/10;border-radius:20px;overflow:hidden;background:#0B1220">
+        <image-slot id="proj-3" shape="rect" placeholder="Project photo: panel upgrade, labelled board"></image-slot>
+        <figcaption style="position:absolute;left:16px;right:16px;bottom:16px;padding:16px 20px;pointer-events:none;background:rgba(10,15,26,0.5);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,0.14);border-radius:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.18)">
+          <p style="margin:0;font-family:Manrope,sans-serif;font-weight:700;font-size:17px">Westfield Terrace</p>
+          <p style="margin:4px 0 0;font-size:13px;color:#A3AEBD">Renovation · 200A service upgrade, full rewire</p>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="process" data-screen-label="Process" style="background:#0B1220;padding:clamp(80px,12vw,144px) clamp(16px,4vw,48px);border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06)">
+  <div style="max-width:1160px;margin:0 auto">
+    <div data-reveal="" style="margin-bottom:64px;max-width:640px">
+      <p style="margin:0 0 16px;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:#FFB347;font-weight:600">Process</p>
+      <h2 style="margin:0;font-family:Manrope,sans-serif;font-weight:700;font-size:clamp(32px,4.4vw,52px);line-height:1.05;letter-spacing:-0.035em;text-wrap:balance">Four steps, no surprises.</h2>
+    </div>
+    <div style="position:relative">
+      <sc-if value="{{ notMobile }}" hint-placeholder-val="{{ true }}">
+        <div aria-hidden="true" style="position:absolute;left:6px;right:6px;top:6px;height:1px;background:rgba(255,255,255,0.1)"></div>
+        <div aria-hidden="true" data-reveal="line" style="position:absolute;left:6px;right:6px;top:6px;height:1px;background:linear-gradient(90deg,#F59E0B,#FFB347);box-shadow:0 0 12px rgba(255,179,71,0.6);transform-origin:left center"></div>
+      </sc-if>
+      <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:{{ processCols }};gap:40px 32px">
+        <li data-reveal="" data-delay="0" style="display:flex;flex-direction:column;gap:12px">
+          <span aria-hidden="true" style="width:13px;height:13px;border-radius:50%;background:#05080F;border:2px solid #FFB347;position:relative;z-index:1;margin-bottom:16px"></span>
+          <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#8B97A8">Step 1</span>
+          <h3 style="margin:0;font-family:Manrope,sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.02em">Consult</h3>
+          <p style="margin:0;color:#A3AEBD;font-size:15px;line-height:1.6">We walk the site or review drawings with you and note every requirement.</p>
+        </li>
+        <li data-reveal="" data-delay="150" style="display:flex;flex-direction:column;gap:12px">
+          <span aria-hidden="true" style="width:13px;height:13px;border-radius:50%;background:#05080F;border:2px solid #FFB347;position:relative;z-index:1;margin-bottom:16px"></span>
+          <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#8B97A8">Step 2</span>
+          <h3 style="margin:0;font-family:Manrope,sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.02em">Quote</h3>
+          <p style="margin:0;color:#A3AEBD;font-size:15px;line-height:1.6">An itemised, fixed price within 48 hours, with a start date you can plan around.</p>
+        </li>
+        <li data-reveal="" data-delay="300" style="display:flex;flex-direction:column;gap:12px">
+          <span aria-hidden="true" style="width:13px;height:13px;border-radius:50%;background:#05080F;border:2px solid #FFB347;position:relative;z-index:1;margin-bottom:16px"></span>
+          <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#8B97A8">Step 3</span>
+          <h3 style="margin:0;font-family:Manrope,sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.02em">Install</h3>
+          <p style="margin:0;color:#A3AEBD;font-size:15px;line-height:1.6">The same crew start to finish, with a daily update on progress.</p>
+        </li>
+        <li data-reveal="" data-delay="450" style="display:flex;flex-direction:column;gap:12px">
+          <span aria-hidden="true" style="width:13px;height:13px;border-radius:50%;background:#FFB347;border:2px solid #FFB347;box-shadow:0 0 14px rgba(255,179,71,0.7);position:relative;z-index:1;margin-bottom:16px"></span>
+          <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#8B97A8">Step 4</span>
+          <h3 style="margin:0;font-family:Manrope,sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.02em">Inspect</h3>
+          <p style="margin:0;color:#A3AEBD;font-size:15px;line-height:1.6">Full testing, permit inspection, and a handover pack with circuit schedules.</p>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" data-screen-label="Reviews" style="position:relative;padding:clamp(80px,12vw,144px) clamp(16px,4vw,48px);overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;width:560px;height:560px;left:-120px;top:20%;border-radius:50%;background:radial-gradient(circle, rgba(245,158,11,0.13), rgba(245,158,11,0) 65%);pointer-events:none"></div>
+  <div style="position:relative;max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(40px,6vw,80px);align-items:center">
+    <div data-reveal="">
+      <p style="margin:0 0 16px;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:#FFB347;font-weight:600">Reviews</p>
+      <h2 style="margin:0;font-family:Manrope,sans-serif;font-weight:700;font-size:clamp(32px,4.4vw,52px);line-height:1.05;letter-spacing:-0.035em;text-wrap:balance">What clients say after handover.</h2>
+      <p style="margin:24px 0 0;max-width:400px;color:#8B97A8;font-size:16px;line-height:1.6">Reviews from homeowners, builders and property managers we've worked with.</p>
+    </div>
+    <div data-reveal="" onMouseEnter="{{ pauseReviews }}" onMouseLeave="{{ resumeReviews }}" onFocus="{{ pauseReviews }}" onBlur="{{ resumeReviews }}" style="position:relative;height:640px;overflow:hidden;-webkit-mask-image:linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%);mask-image:linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%)">
+      <div style="display:grid;grid-template-columns:{{ reviewCols }};gap:16px;align-items:start">
+        <div data-marquee="" style="display:flex;flex-direction:column;gap:16px;padding-bottom:16px;animation:marqueeUp 42s linear infinite;animation-play-state:{{ reviewPlay }}">
+          <sc-for list="{{ reviewsA }}" as="r" hint-placeholder-count="4">
+            <figure style="margin:0;padding:28px;display:flex;flex-direction:column;gap:24px;background:rgba(255,255,255,0.06);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,0.14);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.18), 0 20px 50px -20px rgba(0,0,0,0.6);transition:border-color .25s, box-shadow .25s" style-hover="border-color:rgba(255,255,255,0.3);box-shadow:inset 0 1px 0 rgba(255,255,255,0.22), 0 20px 50px -20px rgba(0,0,0,0.6), 0 0 40px -10px rgba(255,170,60,0.35)">
+              <blockquote style="margin:0;font-size:16px;line-height:1.6;color:#E2E6EC;text-wrap:pretty"><span style="display:block;color:#FFB347;letter-spacing:0.15em;font-size:13px;margin-bottom:14px" aria-label="5 stars">★★★★★</span>{{ r.quote }}</blockquote>
+              <figcaption style="font-size:14px"><span style="display:block;font-weight:600">{{ r.name }}</span><span style="color:#8B97A8">{{ r.role }}</span></figcaption>
+            </figure>
+          </sc-for>
+        </div>
+        <sc-if value="{{ notMobile }}" hint-placeholder-val="{{ true }}">
+          <div data-marquee="" style="display:flex;flex-direction:column;gap:16px;padding-bottom:16px;animation:marqueeUp 50s linear infinite reverse;animation-play-state:{{ reviewPlay }}">
+            <sc-for list="{{ reviewsB }}" as="r" hint-placeholder-count="4">
+              <figure style="margin:0;padding:28px;display:flex;flex-direction:column;gap:24px;background:rgba(255,255,255,0.06);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,0.14);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.18), 0 20px 50px -20px rgba(0,0,0,0.6);transition:border-color .25s, box-shadow .25s" style-hover="border-color:rgba(255,255,255,0.3);box-shadow:inset 0 1px 0 rgba(255,255,255,0.22), 0 20px 50px -20px rgba(0,0,0,0.6), 0 0 40px -10px rgba(255,170,60,0.35)">
+              <blockquote style="margin:0;font-size:16px;line-height:1.6;color:#E2E6EC;text-wrap:pretty"><span style="display:block;color:#FFB347;letter-spacing:0.15em;font-size:13px;margin-bottom:14px" aria-label="5 stars">★★★★★</span>{{ r.quote }}</blockquote>
+              <figcaption style="font-size:14px"><span style="display:block;font-weight:600">{{ r.name }}</span><span style="color:#8B97A8">{{ r.role }}</span></figcaption>
+            </figure>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" data-screen-label="Quote" style="position:relative;background:#0B1220;padding:clamp(80px,12vw,144px) clamp(16px,4vw,48px);border-top:1px solid rgba(255,255,255,0.06);overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;width:720px;height:720px;right:-160px;top:-120px;border-radius:50%;background:radial-gradient(circle, rgba(245,158,11,0.18), rgba(245,158,11,0) 65%);pointer-events:none"></div>
+  <div style="position:relative;max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(40px,6vw,80px);align-items:start">
+    <div data-reveal="" style="display:flex;flex-direction:column;gap:40px">
+      <div>
+        <p style="margin:0 0 16px;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:#FFB347;font-weight:600">Request a quote</p>
+        <h2 style="margin:0;font-family:Manrope,sans-serif;font-weight:700;font-size:clamp(32px,4.4vw,52px);line-height:1.05;letter-spacing:-0.035em;text-wrap:balance">Tell us about the project.</h2>
+        <p style="margin:24px 0 0;max-width:420px;color:#A3AEBD;font-size:16px;line-height:1.6">We reply within one business day. For outages or anything that smells like burning, call now.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <div><p style="margin:0 0 6px;font-size:13px;color:#8B97A8">Phone, 24/7 emergencies</p><a href="tel:+15550142290" style="font-family:Manrope,sans-serif;font-weight:700;font-size:28px;letter-spacing:-0.02em;color:#EEF0F3" style-hover="color:#FFB347">(555) 014-2290</a></div>
+        <div><p style="margin:0 0 6px;font-size:13px;color:#8B97A8">Email</p><a href="mailto:quotes@haldenelectric.com" style="font-size:17px;color:#EEF0F3" style-hover="color:#FFB347">quotes@haldenelectric.com</a></div>
+        <div><p style="margin:0 0 6px;font-size:13px;color:#8B97A8">Office hours</p><p style="margin:0;font-size:16px;line-height:1.6">Mon–Fri 7:00–17:00<br>Sat 8:00–12:00</p></div>
+      </div>
+    </div>
+
+    <div data-reveal="" data-delay="120" style="padding:clamp(24px,4vw,40px);background:rgba(255,255,255,0.06);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,0.14);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.18), 0 20px 50px -20px rgba(0,0,0,0.6)">
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;gap:20px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:20px">
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:500;color:#C9D1DC">Name<input required="" name="name" autocomplete="name" placeholder="Your full name" style="font:inherit;font-size:16px;color:#EEF0F3;background:rgba(5,8,15,0.55);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:14px 16px;outline:none;transition:border-color .2s" style-focus="border-color:#FFB347;box-shadow:0 0 0 3px rgba(255,179,71,0.2)"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:500;color:#C9D1DC">Phone<input required="" name="phone" type="tel" autocomplete="tel" placeholder="(555) 000-0000" style="font:inherit;font-size:16px;color:#EEF0F3;background:rgba(5,8,15,0.55);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:14px 16px;outline:none;transition:border-color .2s" style-focus="border-color:#FFB347;box-shadow:0 0 0 3px rgba(255,179,71,0.2)"></label>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:500;color:#C9D1DC">Project type
+            <select name="type" style="font:inherit;font-size:16px;color:#EEF0F3;background:rgba(5,8,15,0.55);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:14px 16px;outline:none" style-focus="border-color:#FFB347;box-shadow:0 0 0 3px rgba(255,179,71,0.2)">
+              <option>Residential</option>
+              <option>Commercial</option>
+              <option>EV charger</option>
+              <option>Panel upgrade</option>
+              <option>Lighting design</option>
+              <option>Emergency</option>
+            </select>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:500;color:#C9D1DC">Message<textarea name="message" rows="5" placeholder="Scope, address or suburb, and when you'd like to start" style="font:inherit;font-size:16px;color:#EEF0F3;background:rgba(5,8,15,0.55);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:14px 16px;outline:none;resize:vertical" style-focus="border-color:#FFB347;box-shadow:0 0 0 3px rgba(255,179,71,0.2)"></textarea></label>
+          <button class="btn" type="submit" style="font:inherit;font-weight:600;font-size:16px;cursor:pointer;border:none;background:#FFB347;color:#1A1205;padding:16px 26px;border-radius:999px;transition:background .2s, box-shadow .2s, transform .2s" style-hover="background:#FFC266;box-shadow:0 0 40px -10px rgba(255,170,60,0.6)">Request a Quote</button>
+        </form>
+      </sc-if>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="display:flex;flex-direction:column;gap:12px;padding:24px 0">
+          <span aria-hidden="true" style="width:12px;height:12px;border-radius:50%;background:#FFB347;box-shadow:0 0 16px 3px rgba(255,179,71,0.6)"></span>
+          <h3 style="margin:8px 0 0;font-family:Manrope,sans-serif;font-size:26px;font-weight:700;letter-spacing:-0.02em">Thanks, we've got it.</h3>
+          <p style="margin:0;color:#A3AEBD;font-size:16px;line-height:1.6">An electrician will call you within one business day to talk through the scope.</p>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="padding:48px clamp(16px,4vw,48px) 40px;border-top:1px solid rgba(255,255,255,0.08)">
+  <div style="max-width:1160px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px 48px;font-size:14px;color:#8B97A8">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <span style="display:flex;align-items:center;gap:10px;color:#EEF0F3;font-family:Manrope,sans-serif;font-weight:800;font-size:16px"><span aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:#FFB347"></span>Halden Electric</span>
+      <span>Electrical contractor licence #EC-000000</span>
+      <span>Serving the greater metro area and surrounding suburbs</span>
+    </div>
+    <nav aria-label="Footer" style="display:flex;flex-wrap:wrap;gap:8px 24px;align-items:flex-start">
+      <a href="#services" style="color:#C9D1DC" style-hover="color:#FFB347">Services</a>
+      <a href="#projects" style="color:#C9D1DC" style-hover="color:#FFB347">Projects</a>
+      <a href="#why" style="color:#C9D1DC" style-hover="color:#FFB347">Why Us</a>
+      <a href="#reviews" style="color:#C9D1DC" style-hover="color:#FFB347">Reviews</a>
+      <a href="#contact" style="color:#C9D1DC" style-hover="color:#FFB347">Contact</a>
+    </nav>
+    <span style="width:100%;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);font-size:13px">© 2026 Halden Electric. All rights reserved.</span>
+  </div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;playVideo&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Hero&quot;}}">
+class Component extends DCLogic {
+  state = { mobile: typeof window !== 'undefined' && window.innerWidth < 900, sent: false, reviewsPaused: false };
+  reviews = [
+    { quote: 'The quote matched the invoice to the dollar. Our architect commented on how clean the rough-in was before the drywall went up.', name: 'Sarah M.', role: 'Custom home, Ridge House' },
+    { quote: "They hit every milestone on our fit-out schedule and the inspection passed first time. They're on our next three jobs.", name: 'Daniel R.', role: 'Project manager, commercial builder' },
+    { quote: 'Panel upgrade and EV charger done in a day. They covered the floors, labelled every breaker and walked me through the board.', name: 'Priya K.', role: 'Homeowner, Westfield' },
+    { quote: 'Called at 9pm with half the house dark. An electrician was on site within the hour and traced it to a failed neutral at the meter.', name: 'James T.', role: 'Emergency callout' },
+    { quote: 'They planned the lighting with our architect from the drawings. Every scene works exactly as we pictured it.', name: 'Elena V.', role: 'Lighting design, coastal home' },
+    { quote: 'Our café fit-out had a tight window between trades. They worked two nights to keep the opening date.', name: 'Marcus L.', role: 'Owner, Oak & Ember' },
+    { quote: 'No upsell. They confirmed our existing panel could carry the charger and saved us an upgrade we were told we needed.', name: 'Tom & Ana B.', role: 'EV charger install' },
+    { quote: 'Fourth job with them across our rental portfolio. Test records and permits are always complete for the inspector.', name: 'Rachel O.', role: 'Property manager' }
+  ];
+  componentDidMount() {
+    this.onResize = () => {
+      const m = window.innerWidth < 900;
+      if (m !== this.state.mobile) this.setState({ mobile: m });
+    };
+    window.addEventListener('resize', this.onResize);
+    this.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.setupVideo();
+    this.io = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      this.show(e.target);
+      this.io.unobserve(e.target);
+    }), { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    this.scan();
+    this.navStagger();
+    this.waitFor('gsap', g => { if (g) { this.initMagnetic(); this.initGlow(); } });
+  }
+  componentDidUpdate() { this.setupVideo(); this.scan(); this.initMagnetic(); this.navStagger(); }
+  waitFor(name, cb, tries = 60) {
+    if (window[name]) return cb(window[name]);
+    if (tries <= 0) return cb(null);
+    setTimeout(() => this.waitFor(name, cb, tries - 1), 100);
+  }
+  get fine() { return window.matchMedia('(hover: hover) and (pointer: fine)').matches && !this.reduced; }
+  initMagnetic() {
+    if (!window.gsap || !this.fine) return;
+    document.querySelectorAll('.btn').forEach(el => {
+      if (el.dataset.mag) return;
+      el.dataset.mag = '1';
+      el.addEventListener('mousemove', e => {
+        const r = el.getBoundingClientRect();
+        gsap.to(el, { x: (e.clientX - r.left - r.width / 2) * 0.35, y: (e.clientY - r.top - r.height / 2) * 0.45, duration: 0.4, ease: 'power3.out' });
+      });
+      el.addEventListener('mouseleave', () => gsap.to(el, { x: 0, y: 0, duration: 0.8, ease: 'elastic.out(1, 0.4)' }));
+    });
+  }
+  initGlow() {
+    const hero = document.getElementById('top'), glow = document.querySelector('[data-cursor-glow]');
+    if (!window.gsap || !hero || !glow || !this.fine) return;
+    const r = hero.getBoundingClientRect();
+    gsap.set(glow, { x: r.width * 0.62, y: r.height * 0.45 });
+    const xTo = gsap.quickTo(glow, 'x', { duration: 1.1, ease: 'power3.out' });
+    const yTo = gsap.quickTo(glow, 'y', { duration: 1.1, ease: 'power3.out' });
+    hero.addEventListener('mousemove', e => {
+      const b = hero.getBoundingClientRect();
+      xTo(e.clientX - b.left); yTo(e.clientY - b.top);
+      glow.style.opacity = '1';
+    });
+    hero.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
+  }
+  navStagger() {
+    const links = [...document.querySelectorAll('[data-navlink]')].filter(l => !l.dataset.st);
+    if (!links.length) return;
+    links.forEach(l => { l.dataset.st = '1'; if (!this.reduced) l.style.opacity = '0'; });
+    if (this.reduced) return;
+    this.waitFor('Motion', M => {
+      if (!M) { links.forEach(l => { l.style.opacity = ''; }); return; }
+      M.animate(links, { opacity: [0, 1], y: [-8, 0] }, { duration: 0.5, ease: [0.2, 0.7, 0.2, 1], delay: M.stagger(0.07, { startDelay: this.navStarted ? 0 : 0.35 }) });
+      this.navStarted = true;
+    });
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); this.io && this.io.disconnect(); }
+  setupVideo() {
+    const v = document.querySelector('[data-hero-video]');
+    if (!v) return;
+    v.muted = true;
+    v.loop = true;
+    v.playsInline = true;
+    v.setAttribute('playsinline', '');
+    if (!v.dataset.loopBound) {
+      v.dataset.loopBound = '1';
+      v.addEventListener('ended', () => { v.currentTime = 0; v.play().catch(() => {}); });
+    }
+    const play = (this.props.playVideo ?? true) && !this.reduced;
+    if (play) { if (v.paused) v.play().catch(() => {}); }
+    else { v.pause(); try { v.currentTime = 4.9; } catch (e) {} }
+  }
+  scan() {
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      if (el.dataset.rv) return;
+      el.dataset.rv = '1';
+      if (this.reduced) return;
+      const line = el.dataset.reveal === 'line';
+      el.style.transition = line ? 'transform 1.6s cubic-bezier(.65,0,.35,1) .2s' : 'opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1)';
+      el.style.transitionDelay = (line ? 200 : (+el.dataset.delay || 0)) + 'ms';
+      if (line) el.style.transform = 'scaleX(0)';
+      else { el.style.opacity = '0'; el.style.transform = 'translateY(18px)'; }
+      this.io.observe(el);
+    });
+  }
+  show(el) {
+    const line = el.dataset.reveal === 'line';
+    requestAnimationFrame(() => {
+      if (line) { el.style.transform = 'scaleX(1)'; return; }
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+      const done = () => { el.style.transition = ''; el.style.transitionDelay = ''; el.style.transform = ''; el.style.opacity = ''; el.removeEventListener('transitionend', done); };
+      el.addEventListener('transitionend', done);
+    });
+  }
+  renderVals() {
+    return {
+      notMobile: !this.state.mobile,
+      reviewsA: this.state.mobile ? [...this.reviews, ...this.reviews] : [...this.reviews.slice(0, 4), ...this.reviews.slice(0, 4)],
+      reviewsB: [...this.reviews.slice(4), ...this.reviews.slice(4)],
+      reviewCols: this.state.mobile ? '1fr' : 'repeat(2, minmax(0, 1fr))',
+      reviewPlay: this.state.reviewsPaused ? 'paused' : 'running',
+      pauseReviews: () => this.setState({ reviewsPaused: true }),
+      resumeReviews: () => this.setState({ reviewsPaused: false }),
+      processCols: this.state.mobile ? '1fr' : 'repeat(4, minmax(0, 1fr))',
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      onSubmit: e => { e.preventDefault(); this.setState({ sent: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>
