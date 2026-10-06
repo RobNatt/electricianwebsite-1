@@ -1,0 +1,203 @@
+@import "tailwindcss";
+
+/* ---------- Design tokens ---------- */
+@theme {
+  --color-ink: #05080f;
+  --color-ink-2: #0b1220;
+  --color-fg: #eef0f3;
+  --color-fg-2: #c9d1dc;
+  --color-quote: #e2e6ec;
+  --color-muted: #a3aebd;
+  --color-steel: #8b97a8;
+  --color-hint: #6b7789;
+  --color-amber: #ffb347;
+  --color-amber-hi: #ffc266;
+  --color-amber-light: #ffd08a;
+  --color-amber-deep: #f59e0b;
+  --color-on-amber: #1a1205;
+
+  --font-sans: var(--font-inter), Inter, system-ui, sans-serif;
+  --font-display: var(--font-manrope), Manrope, sans-serif;
+  --font-mono: ui-monospace, Menlo, monospace;
+
+  /* Matches the design's single 900px mobile/desktop switch */
+  --breakpoint-desk: 900px;
+}
+
+:root {
+  /* Glassmorphism system */
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-blur: blur(18px) saturate(140%);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-border-hover: rgba(255, 255, 255, 0.3);
+  --glass-radius: 20px;
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  --glass-shadow: var(--glass-highlight), 0 20px 50px -20px rgba(0, 0, 0, 0.6);
+  --glass-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 20px 50px -20px rgba(0, 0, 0, 0.6),
+    0 0 40px -10px rgba(255, 170, 60, 0.35);
+  --glass-fallback: rgba(16, 22, 35, 0.94);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background: var(--color-ink);
+  }
+  body {
+    margin: 0;
+    background: var(--color-ink);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    color: var(--color-amber);
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--color-amber-light);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-amber);
+    outline-offset: 3px;
+    border-radius: 8px;
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-hint);
+  }
+}
+
+@layer components {
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--glass-radius);
+    box-shadow: var(--glass-shadow);
+  }
+  .glass-dark {
+    --glass-bg: rgba(10, 15, 26, 0.45);
+  }
+  .glass-hover {
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  }
+  .glass-hover:hover {
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--glass-shadow-hover);
+  }
+  .glass-lift:hover {
+    transform: translateY(-3px);
+  }
+
+  /* Buttons. `transform` is left out of the transitions: GSAP drives it for the magnetic effect. */
+  .btn {
+    display: inline-block;
+    border-radius: 999px;
+    font-weight: 600;
+    transition: background 0.2s, box-shadow 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .btn-primary {
+    background: var(--color-amber);
+    color: var(--color-on-amber);
+  }
+  .btn-primary:hover {
+    background: var(--color-amber-hi);
+    color: var(--color-on-amber);
+    box-shadow: 0 0 40px -10px rgba(255, 170, 60, 0.6);
+  }
+  .btn-ghost {
+    font-weight: 500;
+    color: var(--color-fg);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  .btn-ghost:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .eyebrow {
+    margin: 0 0 16px;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--color-amber);
+    font-weight: 600;
+  }
+  .h2 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(32px, 4.4vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+  .section-pad {
+    padding: clamp(80px, 12vw, 144px) clamp(16px, 4vw, 48px);
+  }
+  .gutter-x {
+    padding-left: clamp(16px, 4vw, 48px);
+    padding-right: clamp(16px, 4vw, 48px);
+  }
+
+  .field {
+    font: inherit;
+    font-size: 16px;
+    color: var(--color-fg);
+    background: rgba(5, 8, 15, 0.55);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .field:focus {
+    border-color: var(--color-amber);
+    box-shadow: 0 0 0 3px rgba(255, 179, 71, 0.2);
+  }
+}
+
+/* Solid fallback for browsers without backdrop-filter */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass,
+  .btn-ghost {
+    background: var(--glass-fallback);
+  }
+}
+
+/* Testimonial carousel */
+@keyframes marquee-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+.marquee {
+  animation: marquee-up var(--marquee-duration, 42s) linear infinite;
+}
+.marquee-reverse {
+  animation-direction: reverse;
+}
+.marquee-viewport:hover .marquee,
+.marquee-viewport:focus-within .marquee {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee {
+    animation: none !important;
+  }
+  .marquee-viewport {
+    overflow-y: auto;
+  }
+}
