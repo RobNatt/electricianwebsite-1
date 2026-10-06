@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { Reveal } from "./Reveal";
+import { MenuToggle, MobileMenuPanel } from "./MobileMenu";
 import { navLinks, site, stats } from "@/lib/site";
 
 const videoMask = "linear-gradient(90deg, transparent 0%, #000 14%)";
@@ -27,6 +28,12 @@ export function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const closeMenu = useCallback((restoreFocus?: boolean) => {
+    setMenuOpen(false);
+    if (restoreFocus) menuToggleRef.current?.focus();
+  }, []);
 
   // The video only plays when motion is allowed; reduced-motion users get the poster (CSS swap below).
   useEffect(() => {
@@ -124,7 +131,7 @@ export function Hero() {
         }}
       />
 
-      <div className="gutter-x relative z-[2] flex flex-col gap-4 pt-5">
+      <div className="gutter-x relative z-[3] flex flex-col gap-4 pt-5">
         <Reveal
           as="p"
           className="m-0 text-center text-[11px] font-medium tracking-[0.28em] uppercase opacity-70"
@@ -164,10 +171,15 @@ export function Hero() {
               </motion.li>
             ))}
           </motion.ul>
-          <a href="#contact" className="btn btn-primary shrink-0 px-[18px] py-[11px] text-sm">
-            Request a Quote
-          </a>
+          <div className="flex shrink-0 items-center gap-2">
+            {/* Below 480px the menu panel carries the quote button, so the pill doesn't overflow */}
+            <a href="#contact" className="btn btn-primary px-[18px] py-[11px] text-sm max-[479px]:hidden">
+              Request a Quote
+            </a>
+            <MenuToggle open={menuOpen} onToggle={() => setMenuOpen((o) => !o)} buttonRef={menuToggleRef} />
+          </div>
         </Reveal>
+        <MobileMenuPanel open={menuOpen} onClose={closeMenu} toggleRef={menuToggleRef} />
       </div>
 
       <div className="gutter-x relative z-[2] mx-auto flex w-full max-w-[1160px] flex-1 flex-col justify-end pt-24 pb-10">
