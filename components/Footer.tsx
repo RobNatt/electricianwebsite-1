@@ -19,9 +19,22 @@ export function Footer() {
             </a>
           ))}
         </nav>
-        <span className="w-full border-t border-white/6 pt-6 text-[13px]">
-          © {new Date().getFullYear()} {site.name}. All rights reserved.
-        </span>
+        <div className="flex w-full flex-wrap justify-between gap-x-6 gap-y-2 border-t border-white/6 pt-6 text-[13px]">
+          <span>
+            © {new Date().getFullYear()} {site.name}. All rights reserved.
+          </span>
+          <span>
+            Hosted and Maintained by{" "}
+            <a
+              href={site.maintainer.url}
+              target="_blank"
+              rel="noopener"
+              className="text-fg-2 underline decoration-white/20 underline-offset-4 transition-colors hover:text-amber hover:decoration-amber"
+            >
+              {site.maintainer.name}
+            </a>
+          </span>
+        </div>
       </div>
     </footer>
   );

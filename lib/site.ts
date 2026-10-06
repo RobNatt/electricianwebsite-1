@@ -1,3 +1,4 @@
+// Project images are AI-generated (Higgsfield) stand-ins; replace with real job photos.
 // Business details. Everything here is a placeholder from the design mock-up:
 // swap in the real name, contact details, licence number and stats.
 export const site = {
@@ -11,6 +12,7 @@ export const site = {
   hours: ["Mon–Fri 7:00–17:00", "Sat 8:00–12:00"],
   // Set to false to show the still poster instead of the looping hero video.
   playHeroVideo: true,
+  maintainer: { name: "N-Tech Digital Solutions", url: "https://ntechdigitalsolutions.com" },
 };
 
 export const navLinks = [
@@ -78,7 +80,7 @@ export type Project = {
   title: string;
   meta: string;
   placeholder: string;
-  /** Path under /public, e.g. "/projects/ridge-house.jpg". Leave unset to show the placeholder. */
+  /** Path under /public or an allowed remote URL (see next.config.ts). Leave unset to show the placeholder. */
   image?: string;
   tall?: boolean;
 };
@@ -88,17 +90,20 @@ export const projects: Project[] = [
     title: "Ridge House",
     meta: "New build · Full wiring, landscape lighting, 2 EV chargers",
     placeholder: "Project photo: custom residence at dusk",
+    image: "https://d8j0ntlcm91z4.cloudfront.net/user_3IWTwWfP0Q2Akgqk2XTpORwxqIc/hf_20261006_224110_6482666f-de58-4fed-aebe-db09210547b7.png",
     tall: true,
   },
   {
     title: "Oak & Ember",
     meta: "Commercial · Kitchen circuits, feature lighting",
     placeholder: "Project photo: restaurant fit-out",
+    image: "https://d8j0ntlcm91z4.cloudfront.net/user_3IWTwWfP0Q2Akgqk2XTpORwxqIc/hf_20261006_224109_49be0e6d-cdbe-46bb-aaf3-a3b0aa783fc8.png",
   },
   {
     title: "Westfield Terrace",
     meta: "Renovation · 200A service upgrade, full rewire",
     placeholder: "Project photo: panel upgrade, labelled board",
+    image: "https://d8j0ntlcm91z4.cloudfront.net/user_3IWTwWfP0Q2Akgqk2XTpORwxqIc/hf_20261006_224110_33b64700-e9a4-4fcb-b7fc-137753834381.png",
   },
 ];
 
